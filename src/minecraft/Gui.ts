@@ -178,15 +178,15 @@ export class GUI implements IGUI {
         this.animation.turnTP();
         break;
       }
-      case "KeyL": {
+      case "KeyI": {
         this.animation.swapTime();
         break;
       }
-      case "KeyM": { 
+      case "KeyO": { 
         this.animation.updateSpeed(2);
         break;
       }
-      case "KeyN": { 
+      case "KeyP": { 
         this.animation.updateSpeed(.5);
         break;
       }
