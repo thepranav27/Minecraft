@@ -65,15 +65,8 @@ export class GUI implements IGUI {
    * Resets the state of the GUI
    */
   public reset(): void {
-    this.camera = new Camera(
-      new Vec3([0, 100, 0]),
-      new Vec3([0, 100, -1]),
-      new Vec3([0, 1, 0]),
-      45,
-      this.width / this.height,
-      0.1,
-      1000.0
-    );
+    let aspect = this.width / this.height;
+    this.camera = new Camera(new Vec3([0, 60, 0]), new Vec3([0, 0, -1]), new Vec3([0, 1, 0]), 45, aspect, 0.1, 1000.0);
   }
 
   /**
@@ -154,7 +147,7 @@ export class GUI implements IGUI {
       answer.normalize();
       return answer;
   }
-  
+
   /**
    * Callback function for a key press event
    * @param key
@@ -179,6 +172,22 @@ export class GUI implements IGUI {
       }
       case "KeyR": {
         this.animation.reset();
+        break;
+      }
+      case "KeyT": {
+        this.animation.turnTP();
+        break;
+      }
+      case "KeyL": {
+        this.animation.swapTime();
+        break;
+      }
+      case "KeyM": { 
+        this.animation.updateSpeed(2);
+        break;
+      }
+      case "KeyN": { 
+        this.animation.updateSpeed(.5);
         break;
       }
       case "Space": {
