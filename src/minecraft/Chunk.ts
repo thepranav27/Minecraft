@@ -182,7 +182,6 @@ export class Chunk {
         return this.cubePositionsF32;
     }
     
-    
     public numCubes(): number {
         return this.cubes;
     }

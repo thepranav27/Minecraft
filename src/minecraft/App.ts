@@ -424,7 +424,6 @@ export class MinecraftAnimation extends CanvasAnimation {
     return this.gui;
   }  
   
-  
   public jump() {
       if(!this.isInAir) {
         this.isInAir = true;
