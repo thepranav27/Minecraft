@@ -229,7 +229,6 @@ export class MinecraftAnimation extends CanvasAnimation {
       else {
         this.vel = 0;
       }
-      let movedPos = Vec3.sum(this.playerPosition, this.gui.walkDir());
       let secIndex = 4;
       if(Vec3.sum(this.playerPosition, this.gui.walkDir().scale(1.4)).x < this.chunk[4].getTopLeftX()) {
         if(Vec3.sum(this.playerPosition, this.gui.walkDir().scale(1.4)).z >= this.chunk[4].getTopLeftZ() + 64){
@@ -264,7 +263,7 @@ export class MinecraftAnimation extends CanvasAnimation {
       let iVal = (Math.floor(Vec3.sum(this.playerPosition, this.gui.walkDir().scale(1.4)).z - this.chunk[secIndex].getTopLeftZ()) * 64 + Math.floor(Vec3.sum(this.playerPosition, this.gui.walkDir().scale(1.4)).x - this.chunk[secIndex].getTopLeftX())) * 4 + 1;
       let neighborHeight = this.chunk[secIndex].cubePositions()[iVal];
       if (neighborHeight <= pHeight) {
-        this.playerPosition = movedPos;
+        this.playerPosition = Vec3.sum(this.playerPosition, this.gui.walkDir());
         this.gui.getCamera().setPos(this.playerPosition);
         if(neighborHeight < pHeight){
           this.isInAir = true;   
@@ -287,7 +286,6 @@ export class MinecraftAnimation extends CanvasAnimation {
       this.ambient = (this.lightPosition.y + 10) / 1050;
     }
     
-    // Drawing
     const gl: WebGLRenderingContext = this.ctx;
     let bg: Vec4 = this.backgroundColor;
     if(this.timeOfDay){
@@ -323,11 +321,11 @@ export class MinecraftAnimation extends CanvasAnimation {
     let c: number = 0;
     for(let i = 0; i < this.chunk.length; i++){
       c += this.chunk[i].numCubes();
-      for(let j = 0; j < this.chunk[i].cubePositions().length; j++){
+      for (let j = 0; j < this.chunk[i].cubePositions().length; j++){
         bList.push(this.chunk[i].cubePositions()[j]);
         bTimes.push(time);
       }
-      for(let j = 0; j < this.chunk[i].type().length; j++){
+      for (let j = 0; j < this.chunk[i].type().length; j++){
         bTypes.push(this.chunk[i].type()[j]);
       }
     }

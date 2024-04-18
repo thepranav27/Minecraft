@@ -68,6 +68,7 @@ export class Chunk {
         return this.y - this.size / 2;
     }
 
+    // Disclaimer: This function was mostly AI-Generated with some modifications
     private octPop() {
         const oct22: number[][] = this.octaves[0];
         let oct44: number[][] = [];
@@ -164,16 +165,6 @@ export class Chunk {
         this.octaves.push(oct22);
     }
 
-    private genH(x: number, y: number): number {
-        let h: number = (x << 4) + y;
-        h += (h << 10);
-        h ^= (h >> 6);
-        h += (h << 3);
-        h ^= (h >> 11);
-        h += (h << 15);
-        return h;  
-    }
-
     public type(): number[] {
         return this.typeOfBlock;
     }
@@ -184,5 +175,15 @@ export class Chunk {
     
     public numCubes(): number {
         return this.cubes;
+    }
+
+    private genH(x: number, y: number): number {
+        let h: number = (x << 4) + y;
+        h += (h << 10);
+        h ^= (h >> 6);
+        h += (h << 3);
+        h ^= (h >> 11);
+        h += (h << 15);
+        return h;  
     }
 }
