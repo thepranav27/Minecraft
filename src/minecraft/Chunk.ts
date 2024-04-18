@@ -21,7 +21,7 @@ export class Chunk {
 
         this.heightMax = 100.0;
         this.typeOfBlock = [];
-        this.seed = this.generateHash(this.x, this.y).toString();
+        this.seed = this.genH(this.x, this.y).toString();
         this.octaves = [];
         this.octOne();
         this.octPop();
@@ -150,21 +150,21 @@ export class Chunk {
                 oct22[i].push(Math.floor(this.heightMax * rand.next()));
             }
         }
-        let rand2 = new Rand(this.generateHash(this.x + 64, this.y).toString());
+        let rand2 = new Rand(this.genH(this.x + 64, this.y).toString());
         oct22[0].push(Math.floor(this.heightMax * rand2.next()));
         rand2.next();
         oct22[1].push(Math.floor(this.heightMax * rand2.next()));
 
-        let rand3 = new Rand(this.generateHash(this.x, this.y + 64).toString());
+        let rand3 = new Rand(this.genH(this.x, this.y + 64).toString());
         oct22[2].push(Math.floor(this.heightMax * rand3.next()));
         oct22[2].push(Math.floor(this.heightMax * rand3.next()));
 
-        let rand4 = new Rand(this.generateHash(this.x + 64, this.y + 64).toString());
+        let rand4 = new Rand(this.genH(this.x + 64, this.y + 64).toString());
         oct22[2].push(Math.floor(this.heightMax * rand4.next()));
         this.octaves.push(oct22);
     }
 
-    private generateHash(x: number, y: number): number {
+    private genH(x: number, y: number): number {
         let h: number = (x << 4) + y;
         h += (h << 10);
         h ^= (h >> 6);

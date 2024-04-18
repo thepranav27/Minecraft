@@ -199,8 +199,6 @@ export class MinecraftAnimation extends CanvasAnimation {
     this.blankCubeRenderPass.setup();    
   }
 
-
-
   /**
    * Draws a single frame
    *
@@ -333,7 +331,7 @@ export class MinecraftAnimation extends CanvasAnimation {
         bTypes.push(this.chunk[i].type()[j]);
       }
     }
-    c += this.fillGaps(bList, bTypes);
+    c += this.gFill(bList, bTypes);
 
     const blocks = new Float32Array(bList);
     const types = new Float32Array(bTypes);
@@ -346,7 +344,7 @@ export class MinecraftAnimation extends CanvasAnimation {
     this.blankCubeRenderPass.drawInstanced(c);    
   }
 
-  private fillGaps(blocks: number[], types: number[]): number {
+  private gFill(blocks: number[], types: number[]): number {
     let bList = blocks.slice();
     let c = 0;
 
