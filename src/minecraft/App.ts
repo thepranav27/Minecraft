@@ -190,7 +190,7 @@ export class MinecraftAnimation extends CanvasAnimation {
       (gl: WebGLRenderingContext, loc: WebGLUniformLocation) => {
         gl.uniformMatrix4fv(loc, false, new Float32Array(this.gui.viewMatrix().all()));
     });
-    this.blankCubeRenderPass.addUniform("uAmbient",
+    this.blankCubeRenderPass.addUniform("uAmb",
       (gl: WebGLRenderingContext, loc: WebGLUniformLocation) => {
         gl.uniform1f(loc, this.ambient);
     });
