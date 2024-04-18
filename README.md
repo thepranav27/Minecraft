@@ -3,6 +3,8 @@ Pranav Mereddy (pm32775), Manoj Singireddy (mrs5959)
 
 Collaboration: We pair-programmed for the entire project, alternating between driver and observer.
 
+Slip Days: We used 2 Slip Days for this assignment.
+
 # Terrain Synthesis
 
 We developed a voxel-based terrain generation system using value noise to produce a 64x64 grid of terrain heights, which we implemented across a region around the player. This terrain is generated on-the-fly as the player moves, with seamless transitions between chunks. The terrain heights range from 0 to 100, providing a mix of mountains, valleys, and local features. We optimized rendering performance by utilizing WebGL 2.0's instanced rendering feature, efficiently drawing stacks of cubes based on the terrain heights. Each chunk consists of cubes stacked to represent the terrain, and as the player moves, we dynamically load and unload chunks to maintain a 3x3 chunk renderable region around the player. To ensure a seamless experience, we focused on seamless chunk boundaries and persistent terrain, allowing the player to revisit areas without changes. Pressing the 'R' key resets the player to the starting position and refreshes the rendered chunks. Overall, the system is designed for real-time rendering of terrain and offers a smooth exploration experience.
